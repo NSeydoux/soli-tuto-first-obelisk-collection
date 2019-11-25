@@ -78,19 +78,19 @@ async function createCollection(container, collectionSlug) {
   console.log("You don't have an obelisk collection yet? Let's fix this!");
 
   const queryParam = {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "text/turtle",
-      Slug: collectionSlug,
       Link: '<http://www.w3.org/ns/ldp#BasicContainer>; rel="type"'
     },
     // Look at collection.js to see how the vocabulary is used
     body: customCollection(await getWebid())
   };
-
+  const path = `${ container }/${ collectionSlug }`;
+  
   console.log("Creating collection under container " + container);
   return auth
-    .fetch(container, queryParam)
+    .fetch(path, queryParam)
     .then(response => {
       console.log(response.statusText);
       return response.status;
