@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "solid-auth-cli": "1.0.8",
     "tripledoc": "1.3.2"
   },
